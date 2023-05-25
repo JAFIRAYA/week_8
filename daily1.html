@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return submitForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+    
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" required><br><br>
+    
+        <input type="submit" value="Send">
+      </form>
+    
+      <p>Output:</p>
+      <pre id="output"></pre>
+      <script>
+         function submitForm() {
+      
+      let name = document.getElementById("name").value;
+      let lastName = document.getElementById("last-name").value;
+
+      
+      let formData = {
+        name: name,
+        lastName: lastName
+      };
+
+      
+      let jsonString = JSON.stringify(formData);
+
+      
+      let output = document.getElementById("output");
+      output.textContent = jsonString;
+
+      
+      return false;
+       }
+      </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Giphy Random GIF</h1>
+    <form id="search-form">
+      <label for="search-input">Search:</label>
+      <input type="text" id="search-input" required>
+      <button type="submit">Search GIF</button>
+    </form>
+    <div id="gif-container"></div>
+<script>
+    // Function to create a DELETE button
+function createDeleteButton() {
+  var deleteButton = document.createElement("button");
+  deleteButton.textContent = "DELETE";
+  deleteButton.classList.add("delete-button");
+  return deleteButton;
+}
+
+// Function to create a gif element
+function createGifElement(gifUrl, category) {
+  var gifDiv = document.createElement("div");
+  gifDiv.classList.add("gif");
+
+  var img = document.createElement("img");
+  img.src = gifUrl;
+  img.alt = category;
+
+  var categoryText = document.createElement("p");
+  categoryText.textContent = "Category: " + category;
+
+  var deleteButton = createDeleteButton();
+
+  gifDiv.appendChild(img);
+  gifDiv.appendChild(categoryText);
+  gifDiv.appendChild(deleteButton);
+
+  return gifDiv;
+}
+
+// Function to fetch a random GIF based on the search query
+function fetchRandomGif(searchQuery) {
+  var apiKey = "hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
+  var apiUrl = "https://api.giphy.com/v1/gifs/random?rating=g&api_key=" + apiKey + "&tag=" + searchQuery;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      var gifUrl = data.data.images.original.url;
+      var category = searchQuery;
+
+      var gifContainer = document.getElementById("gif-container");
+      var gifElement = createGifElement(gifUrl, category);
+
+      gifContainer.appendChild(gifElement);
+    })
+    .catch(error => {
+      console.log("An error occurred while fetching the GIF:", error);
+    });
+}
+
+// Function to delete a specific gif
+function deleteGif(event) {
+  var gifElement = event.target.parentElement;
+  gifElement.remove();
+}
+
+// Function to delete all gifs
+function deleteAllGifs() {
+  var gifContainer = document.getElementById("gif-container");
+  gifContainer.innerHTML = "";
+}
+
+// Handle form submission
+document.getElementById("search-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var searchQuery = document.getElementById("search-input").value;
+  fetchRandomGif(searchQuery);
+  document.getElementById("search-input").value = "";
+});
+
+// Handle delete button click for a specific gif
+document.getElementById("gif-container").addEventListener("click", function(event) {
+  if (event.target.classList.contains("delete-button")) {
+    deleteGif(event);
+  }
+});
+
+// Handle delete all button click
+document.getElementById("delete-all-button").addEventListener("click", function() {
+  deleteAllGifs();
+});
+
+</script>  
+</body>
+</html>
