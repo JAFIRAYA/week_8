@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const addArticle = () => {
+     
+    fetch("https://api.chucknorris.io/jokes/random?category=dev")
+        .then((response) => {
+            console.log(response);
+            if(response.ok===true){
+                return response.json()
+            } else {
+                throw new Error("error")
+            }
+        })
+        .then((obj) => {
+            console.log(obj);
+        })
+        .catch((error)  => {
+            console.log(error);
+        });
+    console.log("Work Done ...")
+}
+
+addArticle()
+    </script>
+</body>
+</html>
