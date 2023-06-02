@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* function makeAllCaps(words) {
+  return new Promise((resolve, reject) => {
+    const allStrings = words.every(word => typeof word === 'string');
+    if (allStrings) {
+      const uppercasedWords = words.map(word => word.toUpperCase());
+      resolve(uppercasedWords);
+    } else {
+      reject('All elements in the array must be strings');
+    }
+  });
+}
+
+function sortWords(words) {
+  return new Promise((resolve, reject) => {
+    if (words.length > 4) {
+      const sortedWords = words.sort();
+      resolve(sortedWords);
+    } else {
+      reject('Array length must be greater than 4');
+    }
+  });
+}
+-----------------------daily2-------------------------
+
+const morse = `{
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  "a": ".-",
+  "b": "-...",
+  "c": "-.-.",
+  "d": "-..",
+  "e": ".",
+  "f": "..-.",
+  "g": "--.",
+  "h": "....",
+  "i": "..",
+  "j": ".---",
+  "k": "-.-",
+  "l": ".-..",
+  "m": "--",
+  "n": "-.",
+  "o": "---",
+  "p": ".--.",
+  "q": "--.-",
+  "r": ".-.",
+  "s": "...",
+  "t": "-",
+  "u": "..-",
+  "v": "...-",
+  "w": ".--",
+  "x": "-..-",
+  "y": "-.--",
+  "z": "--..",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "!": "-.-.--",
+  "-": "-....-",
+  "/": "-..-.",
+  "@": ".--.-.",
+  "(": "-.--.",
+  ")": "-.--.-"
+}`;
+
+function toJs() {
+  return new Promise((resolve, reject) => {
+    try {
+      const morseJS = JSON.parse(morse);
+      if (Object.keys(morseJS).length === 0) {
+        reject('Morse object is empty');
+      } else {
+        resolve(morseJS);
+      }
+    } catch (error) {
+      reject('Invalid JSON format');
+    }
+  });
+}
+
+function toMorse(morseJS) {
+  return new Promise((resolve, reject) => {
+    const userInput = prompt('Enter a word or sentence:');
+    const morseTranslation = [];
+
+    for (let i = 0; i < userInput.length; i++) {
+      const char = userInput[i].toLowerCase();
+      if (morseJS[char]) {
+        morseTranslation.push(morseJS[char]);
+      } else {
+        reject(`Invalid character: ${userInput[i]}`);
+        return;
+      }
+    }
+
+    resolve(morseTranslation);
+  });
+}
+
+function joinWords(morseTranslation) {
+  const joinedTranslation = morseTranslation.join(' ');
+  console.log(joinedTranslation);
+}
+
+toJs()
+  .then((morseJS) => toMorse(morseJS))
+  .then((morseTranslation) => joinWords(morseTranslation))
+  .catch((error) => console.log(error));
+
+*/
+
+    </script>
+</body>
+</html>
