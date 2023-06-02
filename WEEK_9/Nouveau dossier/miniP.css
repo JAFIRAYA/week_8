@@ -1,0 +1,36 @@
+body{
+    background-image: url(https://i.giphy.com/media/TxVVB6PfWMjE4/200.webp);
+}
+#information{
+    width: 600px;
+    height: 300px;
+    border: 3px solid rgb(209, 209, 14);
+    position:absolute;
+    padding-left: 15%;
+    padding-top:3%;
+    margin-left: 26%;
+    margin-top: 13%;
+    border-radius: 25px;
+}
+p{
+    
+    color:rgb(185, 185, 37) ;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    
+}
+#btn{
+    position: absolute;
+    margin-left: 44%;
+    margin-top: 36%;
+    border-radius: 30px;
+    background-color: transparent;
+    border: 2px solid rgb(209, 209, 14);
+    color: rgb(209, 209, 14);
+    font-family:Arial, Helvetica, sans-serif ;
+}
+#btn:hover{
+    background-color: rgb(228, 228, 96);
+    color: black;
+ }

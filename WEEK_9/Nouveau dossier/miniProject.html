@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="miniP.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    
+    <div id="information"></div>
+    <button id="btn">find someone</button>
+   <script>
+
+let BTN=document.getElementById("btn")
+BTN.addEventListener('click',characterinfo)
+
+
+    function retrieve(id){
+        return document.getElementById(id);
+    }
+    //get data
+    async function getdataAPI(){
+        try{
+            var id= Math.floor(Math.random()*83) 
+            afficheLoading()
+            const response = await fetch("https://swapi.dev/api/people/"+id);
+            if(response.ok){
+                return response.json();
+            }else{
+                if(response.status == 404){
+                    alert(404)
+                }else{
+                    throw new Error('something went wrong')
+                }
+            }
+        }catch (error) {
+        console.log(error);
+  }    
+    }
+    
+    async function characterinfo(){
+        let data = await getdataAPI()
+        console.log(data)
+
+        let infoElement=document.getElementById("information")
+        infoElement.innerHTML=""
+
+        let nameElement=document.createElement("p")
+        nameElement.textContent=`Name : ${data.name} `
+        infoElement.appendChild(nameElement);
+
+        let hightElement=document.createElement("p")
+        hightElement.textContent=`Height : ${data.height}` 
+        infoElement.appendChild(hightElement)
+
+        let genderElement=document.createElement("p")
+        genderElement.textContent=`Gender : ${data.gender}`
+        infoElement.appendChild(genderElement)
+
+        let birthElement=document.createElement("p")
+        birthElement.textContent=`Birthday : ${data.birth_year}` 
+        infoElement.appendChild(birthElement)
+
+
+        let skinElement=document.createElement("p")
+        skinElement.textContent=`Skin Color : ${data.skin_color}` 
+        infoElement.appendChild(skinElement)
+
+
+
+    }
+    function afficheLoading() {
+     const infoElement= document.getElementById("information");
+     infoElement.innerHTML = '<i  class="fa-solid fa-spinner fa-spin-pulse text-white"></i> Loading...';
+    }
+
+    function masquerLoading(){
+        const infoElement= document.getElementById("information");
+        infoElement.innerHTML =""
+    }
+    
+    
+   
+  
+
+   </script> 
+</body>
+</html>
