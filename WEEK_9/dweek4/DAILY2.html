@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sunrise Time</title>
+</head>
+<body>
+  <form id="cityForm">
+    <label for="city1Lat">City 1 Latitude:</label>
+    <input type="text" id="city1Lat" required><br>
+
+    <label for="city1Long">City 1 Longitude:</label>
+    <input type="text" id="city1Long" required><br>
+
+    <label for="city2Lat">City 2 Latitude:</label>
+    <input type="text" id="city2Lat" required><br>
+
+    <label for="city2Long">City 2 Longitude:</label>
+    <input type="text" id="city2Long" required><br>
+
+    <button type="submit">Get Sunrise Time</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('cityForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const city1Lat = document.getElementById('city1Lat').value;
+  const city1Long = document.getElementById('city1Long').value;
+  const city2Lat = document.getElementById('city2Lat').value;
+  const city2Long = document.getElementById('city2Long').value;
+
+  const sunrisePromise1 = fetch(`https://api.sunrise-sunset.org/json?lat=${city1Lat}&lng=${city1Long}`)
+    .then(response => response.json())
+    .then(data => data.results.sunrise);
+
+  const sunrisePromise2 = fetch(`https://api.sunrise-sunset.org/json?lat=${city2Lat}&lng=${city2Long}`)
+    .then(response => response.json())
+    .then(data => data.results.sunrise);
+
+  Promise.all([sunrisePromise1, sunrisePromise2])
+    .then(sunriseTimes => {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `<p>Sunrise Time in City 1: ${sunriseTimes[0]}</p>
+                             <p>Sunrise Time in City 2: ${sunriseTimes[1]}</p>`;
+    })
+    .catch(error => {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `<p>Error retrieving sunrise times: ${error.message}</p>`;
+    });
+});
+
+  </script>
+</body>
+</html>
