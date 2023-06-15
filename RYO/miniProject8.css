@@ -1,0 +1,67 @@
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:#060664d8;
+    margin-top: 3%;
+    height:500px ;
+  }
+  
+  h1 {
+    text-align: center;
+    padding-top: 3%;
+    
+    
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: transparent;
+    text-decoration: underline;
+    position: absolute;
+    left: 11%;
+  }
+  
+  button {
+    display: block;
+    margin: 1px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    position: absolute;
+    
+    left: 74%;
+    border: 2px solid beige;
+    background-color: beige;
+    border-radius: 30px;
+  }
+  .card {
+    width: 250px;
+    height: 350px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-left: 37%;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+
+  }
+  
+  .card p {
+    margin: 5px 0; 
+  }
+  @media screen and (max-width: 480px) {
+    .container {
+      max-width: 100%;
+      padding: 10px;
+    }   }
+ 
+  
